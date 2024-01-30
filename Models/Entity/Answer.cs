@@ -1,3 +1,5 @@
+using System.Net;
+
 namespace OpenIAApi.Models.Entity;
 public class Answer{
     public string? id{get;set;}    
@@ -8,4 +10,7 @@ public class Answer{
     } 
     public Usage? usage{get;set;}
     public string? system_fingerprint{get;set;}
+    public string? ReasonPhrase{get;set;}
+    public HttpStatusCode StatusCode{get;set;}
+    public Error? error{get;set;}
 }
