@@ -1,0 +1,15 @@
+@OpenIAApi_HostAddress = http://localhost:5208
+
+GET {{OpenIAApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{OpenIAApi_HostAddress}}/weatherforecast/
+content-type: application/json
+
+{
+  "content": "cual es el comando para generar un docker"
+}
+
+###
