@@ -9,7 +9,7 @@ POST {{OpenIAApi_HostAddress}}/weatherforecast/
 content-type: application/json
 
 {
-  "content": "cual es el comando para generar un docker"
+  "content": "Quien va a ser el proximo campeon del superbowl"
 }
 
 ###

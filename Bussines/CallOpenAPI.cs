@@ -32,7 +32,7 @@ public class CallOpenAPI{
         httpClient.BaseAddress = new Uri("https://api.openai.com");
         httpClient.DefaultRequestHeaders.Accept.Clear();
         httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "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");
+        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "sk-xxxxxxx");
         var response = await PostAsJsonAsync(httpClient);        
         return answerMapping.toDTO(response);
     }
