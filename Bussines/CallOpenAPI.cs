@@ -8,28 +8,30 @@ namespace OpenIAApi.Bussines;
 
 public class CallOpenAPI{
     public static MakingAskDto? _makingAskDto{get;set;}    
+    public static MySettings? _mySettings{get;set;}
 
     public static MakingAsk cargaDatos(){        
         MakingAsk makingASk = new MakingAsk();
-        makingASk.model = "gpt-3.5-turbo";
+        makingASk.model = _mySettings.model;
         Message message = new Message();
-        message.role = "user";
+        message.role = _mySettings.rol;
         message.content = _makingAskDto.content;
         List<Message> messages = new List<Message>();
         messages.Add(message);
         makingASk.messages= messages;
-        makingASk.temperature = 0.7;
+        makingASk.temperature = _mySettings.temperature;
         return makingASk;
     }
     
-    public async Task<AnswerDto> CallAsk(MakingAskDto makingAskDto, string token){
+    public async Task<AnswerDto> CallAsk(MakingAskDto makingAskDto, MySettings mySettings){
         _makingAskDto = makingAskDto;
+        _mySettings = mySettings;
         HttpClient httpClient = new HttpClient();
         AnswerMapping answerMapping = new AnswerMapping();
-        httpClient.BaseAddress = new Uri("https://api.openai.com");
+        httpClient.BaseAddress = new Uri(mySettings.baseAddress);
         httpClient.DefaultRequestHeaders.Accept.Clear();
         httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));        
-        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", mySettings.token_Barer_Open_Api);
         var response = await PostAsJsonAsync(httpClient);
         return answerMapping.toDTO(response);
     }

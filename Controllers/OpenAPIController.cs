@@ -22,7 +22,7 @@ public class OpenAPIController : ControllerBase
     [HttpPost(Name = "GetOpenIAExample")]
     public async Task<IActionResult> GetOpenIA(MakingAskDto makingAskDto){
         CallOpenAPI callOpenAPI = new CallOpenAPI();
-        AnswerDto res = callOpenAPI.CallAsk(makingAskDto, _mySettings.token_Barer_Open_Api).Result;
+        AnswerDto res = callOpenAPI.CallAsk(makingAskDto, _mySettings).Result;
         if(res.StatusCode==System.Net.HttpStatusCode.OK){
             return Ok(res.message);
         }else{
