@@ -1,8 +1,12 @@
-version: '3.9'
+version: '3.4'
 
 services:
-  web:
-    build: .
-    container_name: netcoreimage
+  webapp:
+    image: openia_net-web    
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+     - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - 5208:8080
+      - "8207:8080"
